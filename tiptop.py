@@ -106,38 +106,38 @@ def tiptop(primes, mapping, tol):
   return (A_back * xs[0] + b_back), (A * xs[0] - b)
 
 if __name__ == '__main__':
-  print 'TIP-TOP TOP calculator'
+  print('TIP-TOP TOP calculator')
 
   while True:
-    print
-    print 'Enter the primes / basis elements of your temperament.'
-    print 'Example: 2 3 5 7'
-    print
-    response = raw_input()
+    print()
+    print('Enter the primes / basis elements of your temperament.')
+    print('Example: 2 3 5 7')
+    print()
+    response = input()
     primes = [float(s) for s in response.split()]
-    print
-    print 'Enter the mapping of your temperament, one row (val) at a time.'
-    print 'Example: meantone is'
-    print '1 2 4 7'
-    print '0 -1 -4 -10'
-    print 'Enter an empty line when done.'
-    print
+    print()
+    print('Enter the mapping of your temperament, one row (val) at a time.')
+    print('Example: meantone is')
+    print('1 2 4 7')
+    print('0 -1 -4 -10')
+    print('Enter an empty line when done.')
+    print()
     rows = []
     while True:
-      entries = raw_input().split()
+      entries = input().split()
       if not entries: break
       rows.append([float(s) for s in entries])
     mapping = matrix(rows)
     generators, residual = tiptop(primes, mapping, 1e-9)
-    print 'The TOP generators are:'
-    print [float(x) for x in generators]
-    print 'The errors of each prime are:'
-    print [log(primes[i],2)*1200 * float(residual[i]) for i in range(len(residual))]
-    print '(Or weighted, in cents per octave:)'
-    print [1200 * float(x) for x in residual]
-    print 'So the TOP damage is:', 1200*float(max(abs(residual))), 'cents per octave.'
-    print 'Another? (y/n)'
-    print
-    response = raw_input()
+    print('The TOP generators are:')
+    print([float(x) for x in generators])
+    print('The errors of each prime are:')
+    print([log(primes[i],2)*1200 * float(residual[i]) for i in range(len(residual))])
+    print('(Or weighted, in cents per octave:)')
+    print([1200 * float(x) for x in residual])
+    print('So the TOP damage is:', 1200*float(max(abs(residual))), 'cents per octave.')
+    print('Another? (y/n)')
+    print()
+    response = input()
     if 'Y' not in response.upper(): break
 
